@@ -24,7 +24,7 @@ Customer Invoice::getCustomer() const
 /* Acrescenta um livro ao pedido e devolve false se ele já estiver no pedido, se a quantidade não for positiva ou se o pedido estiver cheio. */
 bool Invoice::addBook(const Book &book, int quantity)
 {
-    if (nBooks > MAX_BOOKS || quantity < 0)
+    if (nBooks >= MAX_BOOKS || quantity < 0) //coloquei >=
     {
         return false;
     }
@@ -50,7 +50,7 @@ bool Invoice::removeBook(const Book &book)
     {
         if (books[position].equals(book))
         {
-            for (int i = position; i < nBooks; i++)
+            for (int i = position; i < nBooks - 1; i++) //coloquei um -1 aqui
             {
                 books[i] = books[i + 1];
                 quantities[i] = quantities[i + 1];
