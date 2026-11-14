@@ -36,6 +36,8 @@ jobs:
     name: Tests
     runs-on: ubuntu-24.04
     needs: build
+    env:
+      PAYMENT_KEY: ${{ secrets.PAYMENT_KEY }}
     steps:
       - uses: actions/checkout@v6
       - name: Install Valgrind
